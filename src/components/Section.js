@@ -7,16 +7,16 @@ function Section({ title, description, leftBtntext, rightBtnText, bgImage }) {
     <Wrap bgImage={bgImage}>
       <Fade bottom>
         <ItemText>
-          <h1>Model S</h1>
-          <p>Order Online for Touchless Delivery</p>
+          <h1>{title}</h1>
+          <p>{description}</p>
         </ItemText>
       </Fade>
 
       <Buttons>
         <Fade bottom>
           <ButtonGroup>
-            <LeftButton>Custom Order</LeftButton>
-            <RightButton>Existing Inventory</RightButton>
+            <LeftButton>{leftBtntext}</LeftButton>
+            {rightBtnText && <RightButton>{rightBtnText}</RightButton>}
           </ButtonGroup>
         </Fade>
         <DownArrow src="/images/down-arrow.svg" />
