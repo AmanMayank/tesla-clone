@@ -1,9 +1,14 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { IoMdClose } from "react-icons/io";
+import { selectCars } from "../features/car/carSlice";
+import { useSelector } from "react-redux";
 
 function Header() {
   const [burgerStatus, setBurgerStatus] = useState(false);
+
+  const cars = useSelector(selectCars);
+  console.log(cars);
 
   return (
     <Container>
@@ -12,13 +17,14 @@ function Header() {
       </a>
 
       <Menu>
-        <a href="#">Model S</a>
-
-        <a href="#">Model 3</a>
-
-        <a href="#">Model X</a>
-
-        <a href="#">Model Y</a>
+        {cars &&
+          cars.map((car, index) => {
+            return (
+              <a key={index} href="#">
+                {car}
+              </a>
+            );
+          })}
       </Menu>
 
       <RightMenu>
@@ -35,6 +41,16 @@ function Header() {
         <CustomClose>
           <IoMdClose onClick={() => setBurgerStatus(false)} />
         </CustomClose>
+
+        {cars &&
+          cars.map((car, index) => {
+            return (
+              <li key={index}>
+                <a href="3">{car}</a>
+              </li>
+            );
+          })}
+
         <li>
           <a href="#">Existing Inventory</a>
         </li>
@@ -50,15 +66,6 @@ function Header() {
         </li>
         <li>
           <a href="#">Roadster</a>
-        </li>
-        <li>
-          <a href="#">Existing Inventory</a>
-        </li>
-        <li>
-          <a href="#">Existing Inventory</a>
-        </li>
-        <li>
-          <a href="#">Existing Inventory</a>
         </li>
       </BurgerNav>
     </Container>
@@ -127,6 +134,7 @@ const BurgerNav = styled.div`
   padding: 20px;
 
   transform: ${(props) => (props.show ? "translateX(0)" : "translateX(100%)")};
+  transition: transform 0.2s ease-in-out;
   li {
     padding: 15px 0px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
