@@ -12,6 +12,20 @@ function Home() {
         leftBtntext=""
         rightBtnText=""
       />
+      <Section
+        bgImage="model-s.jpg"
+        title=""
+        description=""
+        leftBtntext=""
+        rightBtnText=""
+      />
+      <Section
+        bgImage="model-s.jpg"
+        title=""
+        description=""
+        leftBtntext=""
+        rightBtnText=""
+      />
     </Container>
   );
 }
